@@ -8,14 +8,10 @@ import catmoe.shizoukia.fakekarma.FakeKarma;
 import catmoe.shizoukia.fakekarma.config.PermissionGroup;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-public class ChatListener implements EventListener {
+public final class ChatListener implements EventListener {
 
     @FilterEvent
-    public final void onChat(AsyncChatEvent event) {
+    public void onChat(AsyncChatEvent event) {
         final String message = event.getMessage();
         final boolean isCancelled = event.isCancelled();
         final ProxiedPlayer player = event.getSender();
@@ -24,10 +20,11 @@ public class ChatListener implements EventListener {
 
         // 权限 可在配置文件中设置Group.
         for (PermissionGroup it : FakeKarma.groups) {
-            if (player.hasPermission("gkfbp.group." + it.getPermission())) { addPoint[0]=it.getPoint(); return; }
+            if (player.hasPermission("gkfbp.group." + it.getPermission())) { addPoint[0]=it.getPoint(); break; }
         }
+        final String sendMessage = (FakeKarma.config.getString("message").replace("[point]", addPoint[0].toString()));
         if (!isCancelled && message.equalsIgnoreCase("gg")) {
-            MessageUtil.INSTANCE.sendMessage(player, "&d" + Arrays.toString(addPoint) + " 人品值 &8(虽然屁用没有)");
+            MessageUtil.INSTANCE.sendMessage(player, MessageUtil.INSTANCE.colorizeMiniMessage(sendMessage));
         }
     }
 }
