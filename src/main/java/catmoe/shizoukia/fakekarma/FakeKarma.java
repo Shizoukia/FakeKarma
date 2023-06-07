@@ -36,7 +36,7 @@ public final class FakeKarma extends Plugin {
         LoadConfig();
 
         // MessageUtil are MoeFilter util. INSTANCE is kotlin static object path.
-        MessageUtil.INSTANCE.logInfo("[+25KarmaForBungeeCord] plugin Enabled");
+        MessageUtil.INSTANCE.logInfo("[FakeKarma] plugin Enabled");
 
         // Use MoeFilter EventListener here.
         EventManager.INSTANCE.registerListener(this, new ChatListener());
@@ -45,7 +45,8 @@ public final class FakeKarma extends Plugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        MessageUtil.INSTANCE.logInfo("[+25KarmaForBungeeCord] Plugin disabled.");
+        EventManager.INSTANCE.unregisterListener(new ChatListener());
+        MessageUtil.INSTANCE.logInfo("[FakeKarma] Plugin disabled.");
     }
 
     @SuppressWarnings({"ResultOfMethodCallIgnored"})
@@ -59,7 +60,7 @@ public final class FakeKarma extends Plugin {
                 configFile.createNewFile();
             } catch (Exception exception) {
                 exception.printStackTrace();
-                MessageUtil.INSTANCE.logError("[+25KarmaForBungeeCord] Failed to create config file");
+                MessageUtil.INSTANCE.logError("[FakeKarma] Failed to create config file");
                 return;
             }
             try {

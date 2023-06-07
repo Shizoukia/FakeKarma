@@ -1,4 +1,4 @@
-name: GetKarmaForBungeeCord
+name: FakeKarma
 version: '${project.version}'
 main: catmoe.shizoukia.fakekarma.FakeKarma
 author: Shizoukia

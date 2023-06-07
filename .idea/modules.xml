@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/GetKarmaForBungeeCord.iml" filepath="$PROJECT_DIR$/GetKarmaForBungeeCord.iml" />
       <module fileurl="file://$PROJECT_DIR$/getkarmabc.iml" filepath="$PROJECT_DIR$/getkarmabc.iml" />
     </modules>
   </component>
