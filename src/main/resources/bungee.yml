@@ -1,4 +1,6 @@
 name: GetKarmaForBungeeCord
 version: '${project.version}'
-main: catmoe.getkarmabc.Getkarmabc
+main: catmoe.shizoukia.fakekarma.FakeKarma
 author: Shizoukia
+depends:
+  - MoeFilter

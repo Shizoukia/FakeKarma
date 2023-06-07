@@ -71,5 +71,12 @@
             <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>catmoe.fallencrystal</groupId>
+            <artifactId>MoeFilter</artifactId>
+            <version>0.0.1-API5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/MoeFilter.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>
