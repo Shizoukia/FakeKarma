@@ -1,0 +1,4 @@
+name: GetKarmaForBungeeCord
+version: '${project.version}'
+main: catmoe.getkarmabc.Getkarmabc
+author: Shizoukia
