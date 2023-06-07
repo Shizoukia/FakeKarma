@@ -22,8 +22,9 @@ public final class ChatListener implements EventListener {
         for (PermissionGroup it : FakeKarma.groups) {
             if (player.hasPermission("gkfbp.group." + it.getPermission())) { addPoint[0]=it.getPoint(); break; }
         }
+        final String sendMessage = (FakeKarma.config.getString("message").replace("[point]", addPoint[0].toString()));
         if (!isCancelled && message.equalsIgnoreCase("gg")) {
-            MessageUtil.INSTANCE.sendMessage(player, "&d+" + addPoint[0].toString() + " 人品值 &8(虽然屁用没有)");
+            MessageUtil.INSTANCE.sendMessage(player, MessageUtil.INSTANCE.colorizeMiniMessage(sendMessage));
         }
     }
 }

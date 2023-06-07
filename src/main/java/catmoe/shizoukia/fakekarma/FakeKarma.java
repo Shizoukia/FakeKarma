@@ -66,6 +66,7 @@ public final class FakeKarma extends Plugin {
             try {
                 Path file = Paths.get(configFile.getAbsolutePath());
                 List<String> exampleConfig = Arrays.asList(
+                        "message=\"<light_purple>+[point] 人品值! <dark_gray>(虽然屁用没有)\"",
                         " # 不在Group中的将会得到0point(?) 权限为gkfbp.group.设定值.",
                         "group=[",
                         "    {",
