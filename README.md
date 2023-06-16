@@ -1,2 +1,2 @@
-# GetKarmaForBungeeCord
-整理项目，Push备份一下 我怕我整丢了 这玩意真不能用
+# FakeKarma
+在玩家发送gg时自动发送一条消息.
