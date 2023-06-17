@@ -12,18 +12,23 @@ public final class ChatListener implements EventListener {
 
     @FilterEvent
     public void onChat(AsyncChatEvent event) {
-        final String message = event.getMessage();
-        final boolean isCancelled = event.isCancelled();
-        final ProxiedPlayer player = event.getSender();
-        final Integer[] addPoint = {0};
-        // 直接equals的话可能不需要!event.isBackendCommand() && !event.isProxyCommand(). 因为命令前面带"/"
+        if (!event.isCancelled() && event.getMessage().equalsIgnoreCase("gg")) {
+            final ProxiedPlayer player = event.getSender();
+            int point = 0;
+            // 直接equals的话可能不需要!event.isBackendCommand() && !event.isProxyCommand(). 因为命令前面带"/"
 
-        // 权限 可在配置文件中设置Group.
-        for (PermissionGroup it : FakeKarma.groups) {
-            if (player.hasPermission("gkfbp.group." + it.getPermission())) { addPoint[0]=it.getPoint(); break; }
-        }
-        final String sendMessage = (FakeKarma.config.getString("message").replace("[point]", addPoint[0].toString()));
-        if (!isCancelled && message.equalsIgnoreCase("gg")) {
+            if (CacheCooldown.isCooldown(player)) {
+                final String cooldownMessage = FakeKarma.config.getString("cooldown-message");
+                if (!cooldownMessage.isEmpty()) { MessageUtil.INSTANCE.sendMessage(player, MessageUtil.INSTANCE.colorizeMiniMessage(cooldownMessage)); }
+                return;
+            }
+
+            // 权限 可在配置文件中设置Group.
+            for (PermissionGroup it : FakeKarma.groups) {
+                if (player.hasPermission("gkfbp.group." + it.getPermission())) { point=it.getPoint(); break; }
+            }
+            final String sendMessage = (FakeKarma.config.getString("message").replace("[point]", String.valueOf(point)));
+            if (sendMessage.isEmpty()) { return; }
             MessageUtil.INSTANCE.sendMessage(player, MessageUtil.INSTANCE.colorizeMiniMessage(sendMessage));
         }
     }

@@ -67,6 +67,9 @@ public final class FakeKarma extends Plugin {
                 Path file = Paths.get(configFile.getAbsolutePath());
                 List<String> exampleConfig = Arrays.asList(
                         "message=\"<light_purple>+[point] 人品值! <dark_gray>(虽然屁用没有)\"",
+                        " # 单位为秒",
+                        "cooldown=5",
+                        "cooldown-message=\"\"",
                         " # 不在Group中的将会得到0point(?) 权限为gkfbp.group.设定值.",
                         "group=[",
                         "    {",
