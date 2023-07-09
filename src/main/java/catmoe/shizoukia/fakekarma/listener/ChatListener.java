@@ -22,7 +22,7 @@ public final class ChatListener implements EventListener {
 
             if (CacheCooldown.isCooldown(player)) {
                 final String cooldownMessage = FakeKarma.config.getString("cooldown-message");
-                if (!cooldownMessage.isEmpty()) { MessageUtil.INSTANCE.sendMessage(connection, MessagesType.CHAT, cooldownMessage); }
+                if (!cooldownMessage.isEmpty()) { MessageUtil.INSTANCE.sendMessage(cooldownMessage, connection, MessagesType.CHAT); }
                 return;
             }
 
@@ -32,7 +32,7 @@ public final class ChatListener implements EventListener {
             }
             final String sendMessage = (FakeKarma.config.getString("message").replace("[point]", String.valueOf(point)));
             if (sendMessage.isEmpty()) { return; }
-            MessageUtil.INSTANCE.sendMessage(connection, MessagesType.CHAT, sendMessage);
+            MessageUtil.INSTANCE.sendMessage(sendMessage, connection, MessagesType.CHAT);
         }
     }
 }
