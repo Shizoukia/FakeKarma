@@ -4,7 +4,7 @@ import catmoe.fallencrystal.moefilter.api.event.EventListener;
 import catmoe.fallencrystal.moefilter.api.event.FilterEvent;
 import catmoe.fallencrystal.moefilter.api.event.events.bungee.AsyncChatEvent;
 import catmoe.fallencrystal.moefilter.network.bungee.util.bconnection.ConnectionUtil;
-import catmoe.fallencrystal.moefilter.util.message.v2.packet.type.MessagesType
+import catmoe.fallencrystal.moefilter.util.message.v2.packet.type.MessagesType;
 import catmoe.fallencrystal.moefilter.util.message.v2.MessageUtil;
 import catmoe.shizoukia.fakekarma.FakeKarma;
 import catmoe.shizoukia.fakekarma.config.PermissionGroup;
