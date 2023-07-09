@@ -1,7 +1,7 @@
 package catmoe.shizoukia.fakekarma;
 
 import catmoe.fallencrystal.moefilter.api.event.EventManager;
-import catmoe.fallencrystal.moefilter.util.message.MessageUtil;
+import catmoe.fallencrystal.moefilter.util.message.v2.MessageUtil;
 import catmoe.shizoukia.fakekarma.config.PermissionGroup;
 import catmoe.shizoukia.fakekarma.listener.ChatListener;
 import com.typesafe.config.Config;
@@ -17,7 +17,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-//import net.md_5.bungee.*;
 
 @SuppressWarnings("unused")
 public final class FakeKarma extends Plugin {
@@ -36,7 +35,7 @@ public final class FakeKarma extends Plugin {
         LoadConfig();
 
         // MessageUtil are MoeFilter util. INSTANCE is kotlin static object path.
-        MessageUtil.INSTANCE.logInfo("[FakeKarma] plugin Enabled");
+        MessageUtil.INSTANCE.logInfo("[FakeKarma] <green>plugin Enabled");
 
         // Use MoeFilter EventListener here.
         EventManager.INSTANCE.registerListener(this, new ChatListener());
@@ -46,7 +45,7 @@ public final class FakeKarma extends Plugin {
     public void onDisable() {
         // Plugin shutdown logic
         EventManager.INSTANCE.unregisterListener(new ChatListener());
-        MessageUtil.INSTANCE.logInfo("[FakeKarma] Plugin disabled.");
+        MessageUtil.INSTANCE.logInfo("[FakeKarma] <red>Plugin disabled.");
     }
 
     @SuppressWarnings({"ResultOfMethodCallIgnored"})
@@ -60,7 +59,7 @@ public final class FakeKarma extends Plugin {
                 configFile.createNewFile();
             } catch (Exception exception) {
                 exception.printStackTrace();
-                MessageUtil.INSTANCE.logError("[FakeKarma] Failed to create config file");
+                MessageUtil.INSTANCE.logError("[FakeKarma] <red>Failed to create config file");
                 return;
             }
             try {
