@@ -16,23 +16,21 @@ public final class ChatListener implements EventListener {
     public void onChat(AsyncChatEvent event) {
         if (!event.isCancelled() && event.getMessage().equalsIgnoreCase("gg")) {
             final ProxiedPlayer player = event.getSender();
-            final ConnectionUtil connection = ConnectionUtil(player.pendingConnection);
+            final ConnectionUtil connection = new ConnectionUtil(player.getPendingConnection());
             int point = 0;
             // 直接equals的话可能不需要!event.isBackendCommand() && !event.isProxyCommand(). 因为命令前面带"/"
 
             if (CacheCooldown.isCooldown(player)) {
                 final String cooldownMessage = FakeKarma.config.getString("cooldown-message");
-                if (!cooldownMessage.isEmpty()) { MessageUtil.INSTANCE.sendMessage(cooldownMessage, connection, MessagesType.CHAT); }
+                if (!cooldownMessage.isEmpty()) { MessageUtil.INSTANCE.sendMessage(cooldownMessage, MessagesType.CHAT, connection); }
                 return;
             }
 
             // 权限 可在配置文件中设置Group.
-            for (PermissionGroup it : FakeKarma.groups) {
-                if (player.hasPermission("gkfbp.group." + it.getPermission())) { point=it.getPoint(); break; }
-            }
+            for (PermissionGroup it : FakeKarma.groups) { if (player.hasPermission("gkfbp.group." + it.getPermission())) { point=it.getPoint(); break; } }
             final String sendMessage = (FakeKarma.config.getString("message").replace("[point]", String.valueOf(point)));
             if (sendMessage.isEmpty()) { return; }
-            MessageUtil.INSTANCE.sendMessage(sendMessage, connection, MessagesType.CHAT);
+            MessageUtil.INSTANCE.sendMessage(sendMessage, MessagesType.CHAT, connection);
         }
     }
 }
